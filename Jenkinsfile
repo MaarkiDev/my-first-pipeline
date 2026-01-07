@@ -30,13 +30,11 @@ pipeline {
       steps {
         withCredentials([
           string(credentialsId: 'netlify-api-token', variable: 'NETLIFY_AUTH_TOKEN'),
-          string(credentialsId: 'netlify-site-id', variable: 'NETLIFY_SITE_ID')
         ]) {
           sh '''
             npx netlify deploy \
               --prod \
               --auth=$NETLIFY_AUTH_TOKEN \
-              --site=$NETLIFY_SITE_ID \
               --dir=public
           '''
         }
