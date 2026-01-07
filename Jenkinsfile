@@ -26,16 +26,15 @@ pipeline {
       }
     }
 
-    stage('Deploy (Netlify)') {
-      steps {
-        withCredentials([
-          string(credentialsId: 'netlify-api-token', variable: 'NETLIFY_AUTH_TOKEN'),
-        ]) {
-          sh '''
-            npx netlify deploy \
-              --prod \
-              --auth=$NETLIFY_AUTH_TOKEN \
-              --dir=public
+stage('Deploy (Netlify)') {
+  steps {
+    withCredentials([string(credentialsId: 'netlify-api-token', variable: 'NETLIFY_AUTH_TOKEN')]) {
+      sh '''
+        npx netlify deploy \
+          --prod \
+          --auth=$NETLIFY_AUTH_TOKEN \
+          --dir=public \
+          --create-site "my-first-pipeline-${BUILD_NUMBER}"
           '''
         }
       }
