@@ -27,7 +27,6 @@
     "pretest:e2e:replay": "npx playwright install chromium",
     "pretest:e2e:custom": "npx playwright install chromium",
     "test:image-link": "mocha --timeout 300000 \"test/*links.test.js\""
-    "build": "echo \"Tests OK\" && exit 0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
